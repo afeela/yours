@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation';
 
-declare var google;
+declare var google: any;
 
 @Component({
   selector: 'app-cordova-map',
@@ -21,14 +21,23 @@ export class CordovaMapComponent implements OnInit {
     public platform: Platform,
     public geolocation: Geolocation
   ) { 
-    this.platform.ready().then(()=>{
-      var mapOptions = {
-        center: { lat:23.2366, lng: 79.3822 },
-        zoom: 7
-      }
+    // this.platform.ready().then(()=>{
+    //   var mapOptions = {
+    //     center: { lat:23.2366, lng: 79.3822 },
+    //     zoom: 7
+    //   }
 
-      this.map = new google.maps.map(document.getElementById("map"), mapOptions);
-    })
+    //   this.map = new google.maps.map(document.getElementById("map"), mapOptions);
+    // });
+
+    this.initializeApp();
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      // this.GetLocation();
+      // this.getUserLocation();
+    });
   }
 
   GetLocation() {
@@ -51,6 +60,20 @@ export class CordovaMapComponent implements OnInit {
       ref.longitude = position.coords.longitude.toString();
       ref.timestamp = (new Date(position.timestamp)).toString();
     })
+  }
+
+  getUserLocation() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+    
+    }).catch((error) => {
+    });
+    let watch = this.geolocation.watchPosition();
+    watch.subscribe((data) => {
+      // data can be a set of coordinates, or an error (if an error occurred).
+      // data.coords.latitude
+      // data.coords.longitude
+  
+    });
   }
 
   ngOnInit() {}

@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { GoogleMapsComponent } from './google-maps/google-maps.component';
+// import { CordovaMapComponent } from './cordova-map/cordova-map.component';
 
-import { Geolocation } from '@ionic-native/geolocation'
+// import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
     AppComponent,
     GoogleMapsComponent
+    // CordovaMapComponent
   ],
   entryComponents: [],
   imports: [
@@ -27,8 +29,8 @@ import { Geolocation } from '@ionic-native/geolocation'
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Geolocation
+    // Geolocation,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })

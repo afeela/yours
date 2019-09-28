@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { GoogleMapsComponent } from './google-maps/google-maps.component';
+import { CordovaMapComponent } from './cordova-map/cordova-map.component';
+
+// import { Geolocation } from '@ionic-native/geolocation'
 
 const routes: Routes = [
   {
@@ -19,12 +22,19 @@ const routes: Routes = [
   {
     path: 'map', component: GoogleMapsComponent
   }
+  // ,
+  // {
+  //   path: 'cordovamap', component: CordovaMapComponent
+  // }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
+  // providers: [
+  //   Geolocation,
+  // ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
